@@ -1,0 +1,11 @@
+# Swift Build Directories
+**/.build/
+
+# Scripts not Linux compatible
+Utility/brew_update.sh
+Utility/generate_xcodeproj.sh
+Utility/lint.sh
+Utility/setup_docker_server.sh
+Utility/swiftlint_xcode.sh
+Utility/test_xcode.sh
+Utility/xcodeproj_after_install.rb

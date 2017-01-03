@@ -1,0 +1,4 @@
+# Markdownlint Configuration (https://github.com/mivok/markdownlint)
+
+git_recurse true
+rules '~MD013'

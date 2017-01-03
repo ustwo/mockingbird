@@ -1,0 +1,29 @@
+language: generic
+
+matrix:
+  include:
+    - script:
+        - bash test_xcode.sh
+      env: JOB=Xcode
+      os: osx
+      osx_image: xcode8.2
+      before_install:
+        - cd Utility || exit
+        - bash brew_update.sh
+        - bash generate_xcodeproj.sh
+    - script:
+        - cd Utility || exit
+        - bash test.sh
+        - bash lint.sh cli
+      env: JOB=SwiftPM
+      os: osx
+      osx_image: xcode8.2
+    - script:
+        - docker run -it -d -P mockingbird bash -c "cd Utility && bash test.sh"
+      env: JOB=Linux
+      sudo: required
+      services: docker
+      before_install:
+        - cd Utility || exit
+        - bash setup_docker_server.sh
+        - docker ps -a
