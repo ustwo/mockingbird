@@ -17,13 +17,13 @@ Run the setup script to install depedencies and perform an initial local build.
 bash setup.sh
 ```
 
-To setup a Docker container with the server, run the following command:
+To setup a Docker container with the server, run the following command. Alternatively, if you have cloned this repository directly onto a Linux machine, you can [install Swift by following Apple's instructions][swiftlinux].
 
 ```bash
 cd Utility && bash setup_docker_server.sh
 ```
 
-To start the server, from within the Docker container run the following command:
+To start the server, from within the Docker container (or your Linux server) run the following command:
 
 ```bash
 cd Utility && bash start_server.sh
@@ -97,6 +97,7 @@ Mockingbird is released under the MIT license. See [LICENSE.md][license] for det
 [sr2866]: https://bugs.swift.org/browse/SR-2866
 [sr3033]: https://bugs.swift.org/browse/SR-3033
 [swiftcenv]: https://github.com/IBM-Swift/Swift-cfenv
+[swiftlinux]: https://swift.org/download/
 [swiftpm]: https://github.com/apple/swift-package-manager
 [ustwo]: https://ustwo.com/
 [xcode]: https://itunes.apple.com/gb/app/xcode/id497799835?mt=12#
