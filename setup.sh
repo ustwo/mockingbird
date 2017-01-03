@@ -19,8 +19,14 @@ then
     echo 'Installing Homebrew...'
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
-cd Utility || exit
-bash brew_update.sh
+
+if cd Utility
+then
+    bash brew_update.sh
+else
+    echo 'Error: Unable to find `Utility` folder. Exiting.' 1>&2
+    exit 1
+fi
 
 echo 'Building Project...'
 bash build.sh
