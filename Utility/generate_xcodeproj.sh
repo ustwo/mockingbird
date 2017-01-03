@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 swift package generate-xcodeproj \
   --chdir ../ \
   --enable-code-coverage

@@ -1,4 +1,6 @@
 #!/bin/bash
 
+set -euo pipefail
+
 cd ../ || exit
-set -o pipefail && xcodebuild test -project Mockingbird.xcodeproj -scheme Mockingbird | xcpretty
+xcodebuild test -project Mockingbird.xcodeproj -scheme Mockingbird | xcpretty

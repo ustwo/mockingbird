@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 if which swiftlint >/dev/null; then
   swiftlint
 else

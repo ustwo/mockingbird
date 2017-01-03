@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "Ruby version:"
+set -euo pipefail
+
+echo 'Ruby version:'
 ruby -v
 
 echo 'Installing Ruby Dependencies...'

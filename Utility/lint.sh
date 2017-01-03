@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 CLI=false
 if [ "$1" = 'cli' ]; then
   CLI=true
