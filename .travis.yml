@@ -8,6 +8,7 @@ matrix:
       os: osx
       osx_image: xcode8.2
       before_install:
+        - bundle install
         - cd Utility || exit
         - ./brew_update.sh
         - ./generate_xcodeproj.sh
