@@ -3,18 +3,18 @@ language: generic
 matrix:
   include:
     - script:
-        - bash test_xcode.sh
+        - ./test_xcode.sh
       env: JOB=Xcode
       os: osx
       osx_image: xcode8.2
       before_install:
         - cd Utility || exit
-        - bash brew_update.sh
-        - bash generate_xcodeproj.sh
+        - ./brew_update.sh
+        - ./generate_xcodeproj.sh
     - script:
         - cd Utility || exit
-        - bash test.sh
-        - bash lint.sh cli
+        - ./test.sh
+        - ./lint.sh cli
       env: JOB=SwiftPM
       os: osx
       osx_image: xcode8.2
@@ -25,5 +25,5 @@ matrix:
       services: docker
       before_install:
         - cd Utility || exit
-        - bash setup_docker_server.sh
+        - ./setup_docker_server.sh
         - docker ps -a

@@ -14,19 +14,19 @@ Ensure you have the latest version of [Xcode][xcode] and [Docker][docker] instal
 Run the setup script to install depedencies and perform an initial local build.
 
 ```bash
-bash setup.sh
+./setup.sh
 ```
 
 To setup a Docker container with the server, run the following command. Alternatively, if you have cloned this repository directly onto a Linux machine, you can [install Swift by following Apple's instructions][swiftlinux].
 
 ```bash
-cd Utility && bash setup_docker_server.sh
+cd Utility && ./setup_docker_server.sh
 ```
 
 To start the server, from within the Docker container (or your Linux server) run the following command:
 
 ```bash
-cd Utility && bash start_server.sh
+cd Utility && ./start_server.sh
 ```
 
 ### Testing & Linting

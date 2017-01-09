@@ -22,18 +22,19 @@ then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if cd Utility
+if [ ! -d Utility ]
 then
-    bash brew_update.sh
-else
     echo 'Error: Unable to find `Utility` folder. Exiting.' 1>&2
     exit 1
 fi
 
+cd Utility
+./brew_update.sh
+
 echo 'Building Project...'
-bash build.sh
+./build.sh
 
 echo 'Setting Up Xcode Project...'
-bash generate_xcodeproj.sh
+./generate_xcodeproj.sh
 
 echo 'Set Up Complete!'
