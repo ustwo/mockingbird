@@ -18,6 +18,8 @@ matrix:
       env: JOB=SwiftPM
       os: osx
       osx_image: xcode8.2
+      before_install:
+        - bundle install
     - script:
         - docker run -it -d -P mockingbird bash -c "cd Utility && bash test.sh"
       env: JOB=Linux
