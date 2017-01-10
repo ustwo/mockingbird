@@ -8,22 +8,30 @@ matrix:
       os: osx
       osx_image: xcode8.2
       before_install:
-        - cd Utility || exit
+        - rvm list
+        - rvm install $(cat .ruby-version)
+        - bundle install
+        - cd Utility
         - ./brew_update.sh
         - ./generate_xcodeproj.sh
     - script:
-        - cd Utility || exit
         - ./test.sh
         - ./lint.sh cli
       env: JOB=SwiftPM
       os: osx
       osx_image: xcode8.2
+      before_install:
+        - rvm list
+        - rvm install $(cat .ruby-version)
+        - bundle install
+        - cd Utility
+        - ./brew_update.sh
     - script:
         - docker run -it -d -P mockingbird bash -c "cd Utility && bash test.sh"
       env: JOB=Linux
       sudo: required
       services: docker
       before_install:
-        - cd Utility || exit
+        - cd Utility
         - ./setup_docker_server.sh
         - docker ps -a
