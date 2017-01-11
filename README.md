@@ -46,7 +46,7 @@ Each of the top level folders in `Sources` and `Tests` define a module. Each fra
 - **MockServer**: This is the server executable. It runs a basic HTTP server built with the `MockServerKit`.
 - **MockServerKit**: This houses the business logic of the server. This is in a separate module from `MockServer` in order to make it testable. See [SR-3033][sr3033].
 - **ResourceKit**: This contains helper files for managing resources as the Swift Package Manager does not currently have a good way to include them within a package. See [SR-2866][sr2866].
-- **SwaggerKit**: This module parses a Swagger file and has convience methods to build the HTTP server endpoints.
+- **SwaggerKit**: This module parses a Swagger file and has convenience methods to build the HTTP server endpoints.
 - **TestKit**: This library contains helper files for writting tests.
 
 ### Dependencies
@@ -71,7 +71,7 @@ in the `ServerController.swift` for the server and `LoggedTestCase.swift` for th
 
 - [**SR-2866**][sr2866]: The Swift Package Manager currently does not have a way to specify resources (such as assets, test files, etc.) to be included in the package. Mockingbird works around this by adding a `COPY` command in the `Dockerfile` and providing an absolute path to the resources in the code. To provide better support in Xcode, part of the `xcodeproj_after_install.rb` script adds the resources to a Copy Files Build Script Phase for the `ResourceKit` target. Thus `ResourceKit` has three ways for generating the appropriate file url for a given resource - absolute path using Linux (Docker) file layout when building on Linux, absolute path using the macOS file layout when using the Swift compiler on a Mac (i.e. `swift build` and `swift test`), or a resource bundle when using Xcode on a Mac.
 - [**SR-3033**][sr3033]: The Swift Package Manager currently cannot test an executable package (i.e. one with a `main.swift` file). Mockingbird works around this by placing as much code as possible within a library (`MockServerKit`) and only a minimal `main.swift` file in the executable (`MockServer`).
-- [**GitHub PR #807**][github807]: The Swift Package Manager creates a `.build` folder when building. No distinction is made for the operating system when building. So if the `.build` folder is copied from a macOS build to a Linux server and run, it may or may not compile or test correctly. This GitHub PR seeks to either warn the user or place the build artifacts inside a top-level folder specifying the operating system. Mockingbird works around this by adding the `.build` folder to the `.dockerignore` file and doing a clean build on the Linux server.
+- [**SR-3583**][sr3583]: The Swift Package Manager creates a `.build` folder when building. No distinction is made for the operating system when building. So if the `.build` folder is copied from a macOS build to a Linux server and run, it may or may not compile or test correctly. This GitHub PR seeks to either warn the user or place the build artifacts inside a top-level folder specifying the operating system. Mockingbird works around this by adding the `.build` folder to the `.dockerignore` file and doing a clean build on the Linux server. (For more history on this issue, see [GitHub PR #807][github807].)
 
 ## License
 
@@ -96,6 +96,7 @@ Mockingbird is released under the MIT license. See [LICENSE.md][license] for det
 [package]: Package.swift
 [sr2866]: https://bugs.swift.org/browse/SR-2866
 [sr3033]: https://bugs.swift.org/browse/SR-3033
+[sr3583]: https://bugs.swift.org/browse/SR-3583
 [swiftcenv]: https://github.com/IBM-Swift/Swift-cfenv
 [swiftlinux]: https://swift.org/download/
 [swiftpm]: https://github.com/apple/swift-package-manager
