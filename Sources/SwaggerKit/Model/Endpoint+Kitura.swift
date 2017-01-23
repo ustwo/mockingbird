@@ -25,8 +25,7 @@ extension Endpoint {
                         for (key, value) in request.parameters {
                             parametersList.append("- " + key + ": " + value)
                         }
-                        responseText = responseText +
-                                        "\n\nParameters:\n" +
+                        responseText += "\n\nParameters:\n" +
                                         parametersList.joined(separator: "\n")
                     }
 
