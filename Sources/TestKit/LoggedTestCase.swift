@@ -6,6 +6,7 @@
 //  Copyright © 2016 ustwo Fampany Ltd. All rights reserved.
 //
 
+// swiftlint:disable sorted_imports
 #if os(Linux)
     import Glibc
 #else

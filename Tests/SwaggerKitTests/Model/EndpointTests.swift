@@ -18,6 +18,7 @@ final class EndpointTests: LoggedTestCase {
 
     // MARK: - Properties
 
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var router: Router!
 
     // swiftlint:disable:next number_separator
