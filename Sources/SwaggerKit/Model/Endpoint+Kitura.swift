@@ -51,6 +51,8 @@ extension Endpoint {
         let pathString = NSMutableString(string: path)
 
         let range = NSRange(location: 0, length:pathString.length)
+
+        // swiftlint:disable:next redundant_discardable_let
         let _ = regex.replaceMatches(in: pathString,
                                      options: [],
                                      range: range,

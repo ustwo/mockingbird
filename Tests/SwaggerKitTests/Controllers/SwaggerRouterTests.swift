@@ -6,6 +6,10 @@
 //  Copyright © 2016 ustwo Fampany Ltd. All rights reserved.
 //
 
+
+// swiftlint:disable redundant_discardable_let
+
+
 import Foundation
 import ResourceKit
 @testable import SwaggerKit
