@@ -13,6 +13,7 @@ COPY ./Tests /root/Tests
 COPY ./Utility /root/Utility
 
 # Copy Files
+COPY ./Makefile /root/Makefile
 COPY ./Package.pins /root/Package.pins
 COPY ./Package.swift /root/Package.swift
 
