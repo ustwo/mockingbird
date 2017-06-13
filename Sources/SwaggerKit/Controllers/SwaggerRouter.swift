@@ -7,6 +7,7 @@
 //
 
 import CloudFoundryEnv
+import Configuration
 import Foundation
 import Kitura
 import LoggerAPI
@@ -18,7 +19,7 @@ public final class SwaggerRouter {
 
     public let router = Router()
 
-    private let appEnv: AppEnv
+    private let appEnv = ConfigurationManager()
     private let parser: SwaggerParser?
 
     public var port: Int {
@@ -33,8 +34,6 @@ public final class SwaggerRouter {
     // MARK: - Initializers
 
     public init(swaggerURL: URL) throws {
-        appEnv = try CloudFoundryEnv.getAppEnv()
-
         defer {
             router.get("/status", handler: getStatus)
         }

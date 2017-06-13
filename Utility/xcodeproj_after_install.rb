@@ -3,7 +3,7 @@ require 'xcodeproj'
 path_to_project = '../Mockingbird.xcodeproj'
 project = Xcodeproj::Project.open(path_to_project)
 
-FRAMEWORKS = %w(MockServer MockServerKit ResourceKit SwaggerKit TestKit).freeze
+FRAMEWORKS = %w[MockServer MockServerKit ResourceKit SwaggerKit TestKit].freeze
 
 # Removes a folder reference (i.e. blue folder) from a project
 def remove_folder_reference(project, folder_name)
@@ -37,7 +37,7 @@ project.targets.each do |target|
 
       # Add the resources to the group and build phase
       Dir.foreach(resource_path) do |item|
-        next if item == '.' || item == '..'
+        next if ['.', '..'].include?(item)
 
         file = resource_group.new_reference(item)
         copy_phase.add_file_reference(file)

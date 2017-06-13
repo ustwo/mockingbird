@@ -6,10 +6,11 @@ matrix:
         - ./test_xcode.sh
       env: JOB=Xcode
       os: osx
-      osx_image: xcode8.2
+      osx_image: xcode8.3
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
+        - gem install bundler
         - bundle install
         - cd Utility
         - ./brew_update.sh
@@ -19,10 +20,11 @@ matrix:
         - ./lint.sh cli
       env: JOB=SwiftPM
       os: osx
-      osx_image: xcode8.2
+      osx_image: xcode8.3
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
+        - gem install bundler
         - bundle install
         - cd Utility
         - ./brew_update.sh
