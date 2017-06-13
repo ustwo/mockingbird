@@ -1,10 +1,10 @@
 # Identifier
-FROM ibmcom/swift-ubuntu:latest
+FROM ibmcom/swift-ubuntu:3.1
 MAINTAINER ustwo Fampany Ltd. https://ustwo.com/
 LABEL Description="Docker image for building and running the Mockingbird sample application."
 
 # Expose Mock Server's Port
-EXPOSE 8090
+EXPOSE 8080
 
 # Copy Directories
 COPY ./Resources /root/Resources
@@ -13,6 +13,7 @@ COPY ./Tests /root/Tests
 COPY ./Utility /root/Utility
 
 # Copy Files
+COPY ./Package.pins /root/Package.pins
 COPY ./Package.swift /root/Package.swift
 
 # Perform Initial Build

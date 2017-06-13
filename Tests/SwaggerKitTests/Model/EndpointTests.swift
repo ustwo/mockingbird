@@ -108,7 +108,7 @@ final class EndpointTests: LoggedTestCase {
 
             XCTAssertEqual(actualResult,
                            expectedResult,
-                           "Expected: \(expectedResult) but instead found: \(actualResult)")
+                           "Expected: \(expectedResult) but instead found: \(actualResult.debugDescription)")
         }
 
         DispatchQueue.main.async {

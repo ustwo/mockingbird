@@ -38,8 +38,8 @@ extension Endpoint {
 
     var kituraPath: String {
         #if os(Linux)
-            let regexObj = try? RegularExpression(pattern: Endpoint.kituraPathRegexString,
-                                                  options: [])
+            let regexObj = try? NSRegularExpression(pattern: Endpoint.kituraPathRegexString,
+                                                    options: [])
         #else
             let regexObj = try? NSRegularExpression(pattern: Endpoint.kituraPathRegexString)
         #endif
