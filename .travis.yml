@@ -10,6 +10,7 @@ matrix:
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
+        - gem install bundler
         - bundle install
         - cd Utility
         - ./brew_update.sh
@@ -23,6 +24,7 @@ matrix:
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
+        - gem install bundler
         - bundle install
         - cd Utility
         - ./brew_update.sh
