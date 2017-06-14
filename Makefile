@@ -1,6 +1,7 @@
 BREW := $(shell which brew)
 BUNDLER := $(shell which bundler)
 DOCKER := $(shell which docker)
+GEM := $(shell which gem)
 RUBY := $(shell which ruby)
 SWIFT := $(shell which swift)
 SWIFTLINT := $(shell which swiftlint)
@@ -32,7 +33,7 @@ setup: dependencies
 
 # - Docker
 
-# Builds a docker image with the server
+# Builds a docker image with the server and starts the container (but not the server within)
 build-docker:
 	$(DOCKER) build -t $(repo_name) .
 	$(DOCKER) run -it -d -P $(repo_name)
@@ -49,13 +50,13 @@ run-docker:
 lint:
 	mkdir -p Reports
 	$(SWIFTLINT) lint --reporter html > ./Reports/lint_results_swift.html
-	bundle exec rubocop utility/ --format html -o ./Reports/lint_results_ruby.html
+	$(BUNDLER) exec rubocop utility/ --format html -o ./Reports/lint_results_ruby.html
 .PHONY: lint
 
 # Lints the source files and outputs the results to the CLI
 lint-cli:
 	$(SWIFTLINT) lint
-	bundle exec rubocop utility/
+	$(BUNDLER) exec rubocop utility/
 .PHONY: lint-cli
 
 # - Test
@@ -90,8 +91,8 @@ endif
 # Installs bundler (or installs the gems if already installed)
 install-bundler:
 ifndef BUNDLER
-	gem install bundler
-	bundler install
+	$(GEM) install bundler
+	bundle install
 else
 	$(BUNDLER) install
 endif

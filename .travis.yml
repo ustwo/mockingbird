@@ -22,7 +22,7 @@ matrix:
         - rvm install $(cat .ruby-version)
         - make setup
     - script:
-        - docker run -it -d -P mockingbird bash -c "make test"
+        - docker run -t mockingbird make test
       env: JOB=Linux
       sudo: required
       services: docker
