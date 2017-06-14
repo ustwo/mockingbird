@@ -3,37 +3,29 @@ language: generic
 matrix:
   include:
     - script:
-        - ./test_xcode.sh
+        - make test-xcode
       env: JOB=Xcode
       os: osx
       osx_image: xcode8.3
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
-        - gem install bundler
-        - bundle install
-        - cd Utility
-        - ./brew_update.sh
-        - ./generate_xcodeproj.sh
+        - make setup
     - script:
-        - ./test.sh
-        - ./lint.sh cli
+        - make test
+        - make lint-cli
       env: JOB=SwiftPM
       os: osx
       osx_image: xcode8.3
       before_install:
         - rvm list
         - rvm install $(cat .ruby-version)
-        - gem install bundler
-        - bundle install
-        - cd Utility
-        - ./brew_update.sh
+        - make setup
     - script:
-        - docker run -it -d -P mockingbird bash -c "cd Utility && bash test.sh"
+        - docker run -t mockingbird make test
       env: JOB=Linux
       sudo: required
       services: docker
       before_install:
-        - cd Utility
-        - ./setup_docker_server.sh
+        - make build-docker
         - docker ps -a

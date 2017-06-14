@@ -39,10 +39,10 @@ bundle install
 
 ## Test
 
-You can quickly run the test suite. From the `Utility` directory, use the following terminal command:
+You can quickly run the test suite, use the following terminal command:
 
 ```sh
-bash test_server.sh
+make test
 ```
 
 <!--- Links --->

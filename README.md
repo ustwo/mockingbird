@@ -14,30 +14,30 @@ Ensure you have the latest version of [Xcode][xcode] and [Docker][docker] instal
 Run the setup script to install depedencies and perform an initial local build.
 
 ```bash
-./setup.sh
+make setup
 ```
 
 To setup a Docker container with the server, run the following command. Alternatively, if you have cloned this repository directly onto a Linux machine, you can [install Swift by following Apple's instructions][swiftlinux].
 
 ```bash
-cd Utility && ./setup_docker_server.sh
+make build-docker
 ```
 
 To start the server, from within the Docker container (or your Linux server) run the following command:
 
 ```bash
-cd Utility && ./start_server.sh
+make run-docker
 ```
 
 ### Testing & Linting
 
-The `Utility` folder contains bash scripts for testing (`test.sh`) and linting (`lint.sh`). Linting will check Ruby, Shell, and Swift files and output them into a `reports` folder in the main directory.
+Test and linting scripts are all contained within the `Makefile` and can be run by `make test` and `make lint` respectively. Linting will check Ruby and Swift files and output them into a `reports` folder in the main directory.
 
 ## Architecture
 
 ### Organization
 
-This repository is organised as specified by the [Swift Package Manager][swiftpm]. All source files for the mock server and client are included in the `Sources` folder with the corresponding tests in the `Tests` folder. A variety of useful scripts are in the `Utility` folder. The project's resources are housed within the `Resources` folder.
+This repository is organised as specified by the [Swift Package Manager][swiftpm]. All source files for the mock server and client are included in the `Sources` folder with the corresponding tests in the `Tests` folder. A variety of useful scripts are contained in the `Makefile`. The project's resources are housed within the `Resources` folder.
 
 ### Libraries and Executables
 
